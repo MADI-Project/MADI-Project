@@ -1,0 +1,7 @@
+{
+  "name": "Average MFCC DSP",
+  "description": "Computes the average MFCCs over time",
+  "type": "dsp",
+  "version": 1,
+  "keywords": ["mfcc", "audio", "average"]
+}
