@@ -7,7 +7,7 @@ This tutorial is part of the **MADI PROJECT** submitted to the Edge Impulse comp
 1. Required Materials
 2. Database
 3. Edge Impulse Steps
-4. Conclusion
+4. Connection to the Jetson Orin Nano Super
 
 ## Required Materials
 - [Edge Impulse Account](https://edgeimpulse.com/)
