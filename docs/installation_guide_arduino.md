@@ -20,5 +20,8 @@ The database utilized for training the speech emotion recognition model, is [CRE
 
 ## Edge Impulse Steps
 
-<img width="3164" height="3256" alt="Create a project (1)" src="https://github.com/user-attachments/assets/290cf3d1-09d7-4419-b6cc-0df29a7c1f59" />
-<img width="2289" height="2684" alt="Create a project" src="https://github.com/user-attachments/assets/70a5e2c1-831a-4dd7-8d92-04d9e672707f" />
+<img width="3244" height="3244" alt="1" src="https://github.com/user-attachments/assets/4445c89b-2264-4ff9-b76b-e756a03db632" />
+<img width="3522" height="4106" alt="2" src="https://github.com/user-attachments/assets/43349804-fcc1-4c34-a0e9-8db8a1ef00d5" />
+<img width="3098" height="3364" alt="3" src="https://github.com/user-attachments/assets/e748e035-35cc-4563-b2be-878f276e952f" />
+
+
