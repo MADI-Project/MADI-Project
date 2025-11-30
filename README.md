@@ -1,15 +1,3 @@
-# MADI PROJECT: Local Education with Emotion Recognition
-## A learning assistant device designed so that the student can ask questions with their voices and receive simple explanations in real time. 
-Among its main features are:
-* It works without an internet connection.
-* It only listens when a physical button is pressed.
-* It recognizes when a student is speaking normally or with signs of frustration, adapting its tone to explain more patiently.
-* It does not record personal data.
-* It does not store or transmit information outside the device.
-* The prototype was specifically designed to support teaching and learning processes with complete safety for students.
-
-
-
 # Emotion-Aware Local Educational Assistant  
 TinyML (Edge Impulse) · Jetson Orin Nano Super · Gemma-2 LLM · Whisper STT · Piper TTS
 
@@ -24,7 +12,8 @@ Enabling privacy-focused, low-latency deployment for classrooms and embedded env
 
 ---
 
-# 1. Role of TinyML in the Project
+## TinyML in the Project
+**The emotional intelligence layer of this assistant depends entirely on Edge Impulse**, and it is the foundation of how the system behaves.
 
 A central component of this assistant is its ability to recognize the user’s emotional state directly on a low-power microcontroller.  
 For this, a lightweight audio-based classifier was designed using a TinyML workflow and deployed on the Arduino Nano 33 BLE Sense.  
@@ -35,127 +24,23 @@ The model runs entirely on-device and distinguishes between two states:
 
 The Jetson receives these probabilities over serial and uses them to adjust the behavior of the language model, enabling responses that feel more supportive when signs of frustration appear.
 
+Benefits provided by TinyML Model:
 
-### Benefits provided by TinyML Model:
-
-- TinyML neural networks that run fully on-device  
+- TinyML neural networks that run fully on-device
+- MFE audio features processing
 - Real-time emotion recognition without cloud processing  
-- MFCC audio processing optimized for the Nano 33 BLE Sense  
-- Perfect integration with embedded workflows  
-- Minimal RAM usage  
+- Perfect integration with embedded workflows
 - Extremely low latency  
 - Privacy-preserving inference  
-- Reproducibility for hackathon evaluation  
-
-**The emotional intelligence layer of this assistant depends entirely on Edge Impulse**, and it is the foundation of how the system behaves.
 
 ---
 
-# 2. Emotion Recognition Pipeline (Core Component)
-
-```
-+---------------------------+
-| Arduino Nano 33 BLE Sense |
-+------------+--------------+
-             |
-     Built-in microphone
-             |
-             v
-+-------------------------------+
-| Edge Impulse TinyML Model    |
-| - MFCC audio features         |
-| - Lightweight classifier      |
-+-------------------------------+
-             |
-             v
-  Output probabilities:
-       negative, neutral
-             |
-             v
-+-------------------------------+
-| JSON over USB Serial          |
-| {"id":"audio",                |
-|  "negative":0.20,             |
-|  "neutral":0.80}              |
-+-------------------------------+
-             |
-             v
-      Jetson Orin Nano
-```
-
-The Jetson reads these probabilities, fuses data, and determines one of:
-
-```
-NEUTRAL
-FRUSTRATED
-```
-
-This emotional state completely changes the LLM’s tone, pacing, and level of detail.
-
----
-
-# 3. Emotion-Adaptive LLM Behavior
-
-### Neutral learner:
-- Clear and direct explanations  
-- Secondary school–level reasoning  
-
-### Frustrated learner:
-- Slow, patient response style  
-- Step-by-step reasoning  
-- Encouraging tone  
-- Simple examples and micro-activities  
-
-Emotion is not decoration.  
-Emotion *determines* how the assistant teaches.
-
----
-
-# 4. High-Level System Architecture
-
-```
-+---------------------------------------------------------------+
-|                       EMOTION FIRST                           |
-+---------------------------------------------------------------+
-
-+---------------------------+        +---------------------------+
-| Arduino Nano BLE Sense   |        | Jetson Orin Nano Super    |
-| (Edge Impulse TinyML)    |        | (Local AI Pipeline)       |
-+------------+--------------+        +-------------+-------------+
-             | JSON (serial)                        |
-             v                                       v
-     +---------------------+             +---------------------------+
-     |  Emotion Manager    |             |  Whisper STT             |
-     |  Fusion + State     |             +------------+-------------+
-     +----------+----------+                          |
-                |                                      v
-                |                           +-----------------------+
-                |                           | Adaptive System Prompt|
-                v                           +-----------+-----------+
-      Emotion State (NEUTRAL / FRUSTRATED)              |
-                                                        v
-                                            +------------------------+
-                                            | Gemma-2 LLM (LLM server)|
-                                            +-----------+------------+
-                                                        |
-                                                        v
-                                            +------------------------+
-                                            | Piper TTS             |
-                                            +-----------+------------+
-                                                        |
-                                                        v
-                                                   Speaker Output
-```
-
----
-
-# 5. Project Overview
+## Project Overview
 
 This assistant performs:
 
 - Speech-to-text using Whisper  
-- Emotion recognition using Edge Impulse TinyML  
-- Emotion fusion on Jetson  
+- Emotion recognition using Edge Impulse TinyML 
 - Emotion-adaptive prompting for LLM  
 - Local educational reasoning using Gemma-2 (llama.cpp)  
 - Local text-to-speech using Piper  
@@ -165,43 +50,85 @@ All inference is offline, private, and fast.
 
 ---
 
-# 6. Repository Structure
+## Emotion-Adaptive LLM Behavior
+
+**Neutral learner:**
+- Clear and direct explanations  
+- Secondary school–level reasoning  
+
+**Frustrated learner:**
+- Slow, patient response style  
+- Step-by-step reasoning  
+- Encouraging tone  
+- Simple examples and micro-activities  
+
+**Emotion determines how the assistant teaches.**
+
+---
+
+---
+# 1. High-Level System Architecture
+
+```
++---------------------------------------------------------------+
+|                       Input Question                          |
++---------------------------------------------------------------+
+
++---------------------------+        +---------------------------+
+| Arduino Nano BLE Sense   |        | Jetson Orin Nano Super     |
+| (Edge Impulse TinyML)    |        | (Local AI Pipeline)        |
++------------+--------------+        +-------------+-------------+
+             |                                        |
+             v                                        v
+     +----------------------+         +---------------------------+
+     | Emotion Recognition  |         |  Whisper STT              |
+     |(NEUTRAL / FRUSTRATED |         +------------+--------------+
+     +----------+-----------+                      |
+           JSON (serial)                           |
+                |                                  v
+                |                      +-----------------------+
+                |--------------------->|Adaptive System Prompt |
+                                       +-----------+-----------+
+                                                   |
+                                                   v
+                                       +------------------------+
+                                       | Gemma-2 LLM (LLM server)|
+                                       +-----------+------------+
+                                                   |
+                                                   v
+                                       +------------------------+
+                                       | Piper TTS              |
+                                       +-----------+------------+
+                                                   |
+                                                   v
+                                            Speaker Output
+```
+---
+# 2. Installation
+
+Refer to:
+- [Jetson setup](docs/installation_guide_jetson.md)
+
+- [Arduino/Edge Impulse setup](docs/installation_guide_arduino.md)
+  
+---
+# 3. Repository Structure
 
 ```
 /
 ├── assistant.py               Main assistant script
 ├── README.md                  Project documentation
-├── requirements.txt           Python dependencies
-├── assets/
-│   ├── bip.wav
-│   └── bip2.wav
 ├── docs/
 │   ├── installation_guide_jetson.md
 │   ├── installation_guide_arduino.md
-│   └── assets/
-└── models/                    Placeholder for Gemma-2 GGUF model
-```
+│   └── conection_guide.md
+└── SpeechEmotionRecognition/
+    └── SpeechEmotionRecognition.ino
 
+```
 ---
 
-# 7. Serial Emotion JSON Format
-
-The Arduino must output the following structure:
-
-```json
-{"id":"audio","negative":0.13,"neutral":0.87}
-```
-
-Jetson logic:
-
-- Reads probabilities via `/dev/ttyACM0`
-- Normalizes values
-- Determines final emotion state
-- Adapts LLM prompt accordingly
-
----
-
-# 8. Quick Start for Judges
+# 6. Quick Start 
 
 ### 1. Start LLM server:
 ```bash
@@ -226,25 +153,10 @@ python3 assistant.py
 - Press and hold button → speak  
 - Release → Whisper transcribes  
 - Edge Impulse model provides emotion  
-- Jetson fuses emotion  
-- LLM responds with adapted tone  
+- Jetson receives the emotion  
+- LLM responds adapting the tone  
 - Piper speaks the output  
 
----
-
-# 9. Installation
-
-Jetson setup:
-```
-docs/installation_guide_jetson.md
-```
-
-Arduino/Edge Impulse setup:
-```
-docs/installation_guide_arduino.md
-```
-
----
 
 # 10. Configuration (assistant.py)
 
@@ -260,21 +172,9 @@ PIPER_MODEL_PATH = "/usr/local/share/piper/models/es_MX-ald-medium.onnx"
 
 ---
 
-# 11. Optional Extensions
+# 12. Authors
 
-Not required for judging but available:
-
-- Image-based emotion model  
-- Additional LLM languages  
-- RAG context from local documents  
-- Larger GGUF models (9B)  
-- Multi-turn conversation memory  
-
----
-
-# 12. Author
-
-Didier – 2025  
+Didier & Mariana – 2025  
 Embedded AI • TinyML • Edge LLM Engineering
 
 ---
