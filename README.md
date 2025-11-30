@@ -78,7 +78,7 @@ The LLM uses both:
 - The **transcribed text**, and  
 - The **emotional state**  
 
-…to generate a fully local, privacy-preserving, and emotionally aligned answer.
+to generate a fully local, privacy-preserving, and emotionally aligned answer.
 
 ---
 
