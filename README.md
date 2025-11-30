@@ -1,5 +1,5 @@
-# MADI Project
-### *Local AI. Emotional Education. Human-Centered Technology.*
+# MADI: Emotion-Focused AI Opening Education Access for All
+
 <img width="5118" height="2878" alt="7" src="https://github.com/user-attachments/assets/243e2be6-68c6-4096-a4af-362cf7cec3a6" />
 
 
