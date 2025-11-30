@@ -19,7 +19,7 @@ Emotion detection is the core innovation of this project and the main driver of 
 
 ---
 
-## 🧠 Core Features
+## Core Features
 - **TinyML-based emotion detection** on-device (audio / Edge Impulse)
 - **Local Large Language Model** (Gemma 2B / Llama.cpp)  
 - **Adaptive responses** depending on emotional state  
@@ -29,7 +29,7 @@ Emotion detection is the core innovation of this project and the main driver of 
 
 ---
 
-## 🔧 Hardware Used
+## Hardware Used
 - Arduino Nano 33 BLE Sense 
 - NVIDIA Jetson Orin Nano Super  
 - Speaker 4-Mic Array or USB mic  
@@ -38,7 +38,10 @@ Emotion detection is the core innovation of this project and the main driver of 
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
+
+<img width="571" height="722" alt="architecture" src="https://github.com/user-attachments/assets/053a753e-a8fc-4f4e-8637-3bc983036cd4" />
+
 
 1. **Arduino Nano 33 BLE Sense** captures audio and runs a TinyML classifier that outputs two states:  
    - Neutral  
