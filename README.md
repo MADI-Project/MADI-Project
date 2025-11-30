@@ -10,10 +10,9 @@ Everything runs fully offline on:
 
 Enabling privacy-focused, low-latency deployment for classrooms and embedded environments.
 
----
 
 ## TinyML in the Project
-**The emotional intelligence layer of this assistant depends entirely on Edge Impulse**, and it is the foundation of how the system behaves.
+**The emotional intelligence layer of this assistant depends entirely on Edge Impulse, and it is the foundation of how the system behaves.**
 
 A central component of this assistant is its ability to recognize the user’s emotional state directly on a low-power microcontroller.  
 For this, a lightweight audio-based classifier was designed using a TinyML workflow and deployed on the Arduino Nano 33 BLE Sense.  
@@ -33,8 +32,6 @@ Benefits provided by TinyML Model:
 - Extremely low latency  
 - Privacy-preserving inference  
 
----
-
 ## Project Overview
 
 This assistant performs:
@@ -47,8 +44,6 @@ This assistant performs:
 - Push-to-talk hardware control  
 
 All inference is offline, private, and fast.
-
----
 
 ## Emotion-Adaptive LLM Behavior
 
@@ -64,9 +59,6 @@ All inference is offline, private, and fast.
 
 **Emotion determines how the assistant teaches.**
 
----
-
----
 # 1. High-Level System Architecture
 
 ```
@@ -103,15 +95,15 @@ All inference is offline, private, and fast.
                                                    v
                                             Speaker Output
 ```
----
+
 # 2. Installation
 
-Refer to:
+Refer to the documentation:
 - [Jetson setup](docs/installation_guide_jetson.md)
 
 - [Arduino/Edge Impulse setup](docs/installation_guide_arduino.md)
   
----
+
 # 3. Repository Structure
 
 ```
@@ -126,7 +118,6 @@ Refer to:
     └── SpeechEmotionRecognition.ino
 
 ```
----
 
 # 6. Quick Start 
 
@@ -158,7 +149,7 @@ python3 assistant.py
 - Piper speaks the output  
 
 
-# 10. Configuration (assistant.py)
+# 10. [Configuration](./assistant.py)
 
 ```
 USE_IMAGE_EMOTION = False
@@ -170,15 +161,13 @@ LLM_URL = "http://127.0.0.1:8090/completion"
 PIPER_MODEL_PATH = "/usr/local/share/piper/models/es_MX-ald-medium.onnx"
 ```
 
----
 
-# 12. Authors
+
+# 11. Authors
 
 Didier & Mariana – 2025  
 Embedded AI • TinyML • Edge LLM Engineering
 
----
-
-# 13. License
+# 12. License
 
 This project is provided for educational and research use as part of the Edge Impulse Hackathon.
