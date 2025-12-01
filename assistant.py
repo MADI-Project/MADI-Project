@@ -88,7 +88,7 @@ else:
 EMOTION_NEUTRAL = "NEUTRAL"
 EMOTION_FRUSTRATED = "FRUSTRATED"
 
-LLM_URL = "http://127.0.0.1:8080/completion"
+LLM_URL = "http://127.0.0.1:8090/completion"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BEEP_SOUND = os.path.join(BASE_DIR, "assets/bip.wav")
