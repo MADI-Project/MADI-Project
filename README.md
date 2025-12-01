@@ -123,7 +123,7 @@ Refer to the documentation:
 cd ~/llama.cpp/build
 ./bin/llama-server \
   -m ../models/gemma-2-2b-it-Q4_K_S.gguf \
-  -p 8090 -t 4 -c 2048 -ngl 999
+  --host 0.0.0.0   --port 8090   -c 2048   -b 16   -t 6   -ngl 0   --no-warmup
 ```
 
 ### 2. Activate Python environment:
@@ -151,11 +151,10 @@ python3 assistant.py
 ```
 USE_IMAGE_EMOTION = False
 USE_GUI_MODE = True
-LANGUAGE = "es"
+LANGUAGE = "en"
 BUTTON_PIN = 15
 AUDIO_SERIAL_PORT = "/dev/ttyACM0"
 LLM_URL = "http://127.0.0.1:8090/completion"
-PIPER_MODEL_PATH = "/usr/local/share/piper/models/es_MX-ald-medium.onnx"
 ```
 
 
