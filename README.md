@@ -1,8 +1,9 @@
 # MADI: Emotion-Focused AI Opening Education Access for All
-<img width="1920" height="1080" alt="M" src="https://github.com/user-attachments/assets/6163ab8a-e888-4bf6-a19c-45e1d7696415" />
 
-<img width="5118" height="2878" alt="7" src="https://github.com/user-attachments/assets/243e2be6-68c6-4096-a4af-362cf7cec3a6" />
-
+<p align="center">
+  <img width="330" height="310" src="https://github.com/user-attachments/assets/a94510d6-6875-4078-a395-1d5eaa08e73f" />
+   <img width="670" height="310" src="https://github.com/user-attachments/assets/243e2be6-68c6-4096-a4af-362cf7cec3a6" />
+</p>
 
 ---
 
@@ -16,7 +17,9 @@ Just human-centered AI.
 
 This project showcases how **Edge Impulse ML models** can power real-time **emotion recognition** on microcontrollers and how this emotional signal can be used to adapt the behavior of a **local LLM** running on embedded hardware.  
 Emotion detection is the core innovation of this project and the main driver of the assistant’s teaching style.
-
+<p style="margin: 0px 0;">
+   <img width="990" height="280" alt="M" src="https://github.com/user-attachments/assets/6163ab8a-e888-4bf6-a19c-45e1d7696415" />
+</p>
 
 ---
 
