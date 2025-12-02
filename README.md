@@ -1,4 +1,5 @@
 # MADI: Emotion-Focused AI Opening Education Access for All
+<img width="1920" height="1080" alt="M" src="https://github.com/user-attachments/assets/6163ab8a-e888-4bf6-a19c-45e1d7696415" />
 
 <img width="5118" height="2878" alt="7" src="https://github.com/user-attachments/assets/243e2be6-68c6-4096-a4af-362cf7cec3a6" />
 
